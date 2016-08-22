@@ -3,8 +3,7 @@
 const path = require('path'),
     settings = require('./config.js'),
     webpack = require('webpack'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    HtmlWebpackPlugin = require('html-webpack-plugin');
+    ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 let config = {
     context: __dirname,
@@ -16,7 +15,7 @@ let config = {
         formatter: require('eslint-friendly-formatter')
     },
     entry: {
-        build: path.join(__dirname, 'app/src/main.js')
+        build: path.join(__dirname, 'app/main.js')
     },
     module: {
         noParse: /node_modules\/json-schema\/lib\/validate\.js/,
@@ -25,10 +24,6 @@ let config = {
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
-            },
-            {
-                test: /\.html$/,
-                loader: 'vue-html-loader'
             },
             {
                 test: /\.js$/,
@@ -63,16 +58,11 @@ let config = {
     },
     plugins: [
         new ExtractTextPlugin('styles.css'),
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: './app/main.ejs',
-            title: settings.name
-        }),
         new webpack.NoErrorsPlugin()
     ],
     output: {
         filename: '[name].js',
-        path: path.join(__dirname, 'app/dist')
+        path: path.join(__dirname, 'public')
     },
     resolve: {
         alias: {

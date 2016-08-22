@@ -40,7 +40,7 @@ function run (command, color, name) {
      */
     if (/VALID/g.test(data.toString().trim().replace(/\n/g, '\n' + repeat(' ', command.length + 2))) && !isElectronOpen) {
       console.log(`${BLUE}Starting electron...\n${END}`)
-      run('cross-env NODE_ENV=development electron app/electron.js', BLUE, 'electron')
+      run('electron electron.js', BLUE, 'electron')
       isElectronOpen = true
     }
   })
@@ -60,11 +60,4 @@ function exit (code) {
 
 console.log(`${YELLOW}Starting webpack-dev-server...\n${END}`)
 
-
-fs.removeSync(__dirname + '/../app/dist/gofbot');
-fs.copySync(__dirname + '/../gofbot', __dirname + '/../app/dist/gofbot');
-
-fs.removeSync(__dirname + '/../app/dist/assets');
-fs.copySync(__dirname + '/../app/src/assets', __dirname + '/../app/dist/assets');
-
-run(`webpack-dev-server --inline --hot --colors --port ${config.port} --content-base app/dist`, YELLOW, 'webpack')
+run(`webpack-dev-server --inline --hot --colors --port ${config.port} --content-base public`, YELLOW, 'webpack')

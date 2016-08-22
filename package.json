@@ -1,6 +1,6 @@
 {
   "name": "pikabot",
-  "version": "0.0.0",
+  "version": "0.0.3",
   "description": "Your GoF Bot On Desktop",
   "scripts": {
     "build": "node tasks/release.js",
@@ -12,7 +12,7 @@
     "dev": "node tasks/runner.js",
     "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter app",
     "pack": "cross-env NODE_ENV=production webpack -p --progress --colors",
-    "postinstall": "cd app && npm install"
+    "postinstall": "./tasks/postinstall.sh"
   },
   "author": "PokemonGof-Desktop-Team",
   "license": "MIT",
