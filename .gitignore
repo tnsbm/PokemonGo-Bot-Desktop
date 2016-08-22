@@ -1,7 +1,6 @@
 .DS_Store
 app/node_modules
 node_modules
-public/*
 npm-debug.log
 npm-debug.log.*
 thumbs.db
